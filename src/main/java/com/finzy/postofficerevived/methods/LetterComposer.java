@@ -4,25 +4,28 @@
 package com.finzy.postofficerevived.methods;
 import com.finzy.postofficerevived.entities.Address;
 import com.finzy.postofficerevived.entities.Letter;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 import java.util.*;
 
 public class LetterComposer
 {
-    private static void getAddress(Scanner input,Letter myLetter,String addressType){
+    private static void getAddress(BufferedReader input,Letter myLetter,String addressType) throws IOException{
        //handle empty input scenarios
-       Address myAddress=null;
+       Address myAddress=new Address();
        System.out.println("Name:");
-       myAddress.setName(input.nextLine());
+       myAddress.setName(input.readLine());
        System.out.println("Door number/Flat number and House Name/Building Name:");
-       myAddress.setDoorNumber(input.nextLine());
+       myAddress.setDoorNumber(input.readLine());
        System.out.println("Street Name:");
-       myAddress.setStreetName(input.nextLine());
+       myAddress.setStreetName(input.readLine());
        System.out.println("City:");
-       myAddress.setCity(input.nextLine());
+       myAddress.setCity(input.readLine());
        System.out.println("State:");
-       myAddress.setStateName(input.nextLine());
+       myAddress.setStateName(input.readLine());
        System.out.println("Pincode:");
-       myAddress.setPincode(Integer.parseInt(input.nextLine()));      
+       myAddress.setPincode(Integer.parseInt(input.readLine()));      
        if (addressType.equals("from"))
            myLetter.setFromAddress(myAddress);
        else
@@ -31,9 +34,9 @@ public class LetterComposer
     }
     
     
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException
     {
-       Scanner input = new Scanner(System.in);
+       BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
        int menuChoice = 5;
        ArrayList<Letter> letters = new ArrayList<Letter>();
        int counter = 0;
@@ -42,7 +45,7 @@ public class LetterComposer
            System.out.println("\t\t1. Compose Letter\t2. Review Letter\t3. Edit Letter\t4. Send Letter\t5. I am done");
            try {
                System.out.println("Enter a choice: ");
-               menuChoice = Integer.parseInt(input.nextLine());
+               menuChoice = Integer.parseInt(input.readLine());
            } catch (NumberFormatException e) {
                System.out.println("Stick to the choices, please");
            }
@@ -59,7 +62,7 @@ public class LetterComposer
                do{
                    try {
                        System.out.println("Stamp price:");
-                       int price = Integer.parseInt(input.nextLine());
+                       int price = Integer.parseInt(input.readLine());
                        myletter.setStamp(price);
                        break;
                    } catch (NumberFormatException e) {
@@ -69,7 +72,7 @@ public class LetterComposer
                    }
                }while(attempts>0);
                System.out.println("Letter content:");
-               myletter.setLetterContent(input.nextLine());
+               myletter.setLetterContent(input.readLine());
                letters.add(myletter);
                counter++;
                break;
