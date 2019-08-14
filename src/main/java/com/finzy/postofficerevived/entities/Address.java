@@ -10,10 +10,10 @@ package com.finzy.postofficerevived.entities;
  * @author anusshen
  */
 public class Address {
-    String name;
-    String doorNumber;
-    String streetName;
-    String city;
+    private String name;
+    private String doorNumber;
+    private String streetName;
+    private String city;
     private String stateName;
     private int pincode;
     
@@ -27,5 +27,26 @@ public class Address {
 
     public String getStateName() {
         return stateName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDoorNumber(String doorNumber) {
+        this.doorNumber = doorNumber;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
     }
 }
