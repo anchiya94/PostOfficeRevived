@@ -76,7 +76,12 @@ public class LetterComposer
                    }
                }while(attempts>0);
                System.out.println("Letter content:");
-               myletter.setLetterContent(input.readLine());
+               StringBuilder letterContent = new StringBuilder(1000);
+               String s;
+               while ((s = input.readLine()) != null && s.length() != 0) {
+                  letterContent.append ("\n"+s);
+               }
+               myletter.setLetterContent(letterContent.toString());
                letters.add(myletter);
                counter++;
                break;
@@ -114,7 +119,7 @@ public class LetterComposer
 
     private static void printMyLetter(Letter letterToPrint) {
        Address gAddress = null;
-       StringBuilder myWrittenLetter = new StringBuilder(100);
+       StringBuilder myWrittenLetter = new StringBuilder(10000);
        myWrittenLetter.append("-----------------------\n");
        myWrittenLetter.append("From Address:\n");
        gAddress = letterToPrint.getFromAddress();
