@@ -54,7 +54,7 @@ public class PostSender {
         if(validateStamp())
            System.out.println("Post sent");
         else
-           System.out.println("Check the stamp atatched");
+           System.out.println("Stamp atatched is of insufficient value");
         
     }
 }

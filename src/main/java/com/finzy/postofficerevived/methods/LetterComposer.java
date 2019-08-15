@@ -40,20 +40,24 @@ public class LetterComposer
        int menuChoice = 5;
        ArrayList<Letter> letters = new ArrayList<Letter>();
        int counter = 0;
+       System.out.println("==================================================================");
+       System.out.println("\t\t\tWelcome to Post Office Revived");
+       System.out.println("==================================================================");
        do {
-           System.out.println("\t\t\tPost Office Revived");
            System.out.println("\t\t1. Compose Letter\t2. Review Letter\t3. Edit Letter\t4. Send Letter\t5. I am done");
            try {
                System.out.println("Enter a choice: ");
                menuChoice = Integer.parseInt(input.readLine());
            } catch (NumberFormatException e) {
                System.out.println("Stick to the choices, please");
+               continue;
            }
 
            switch (menuChoice)
            {case 1:
             {   
                Letter myletter = new Letter();
+               System.out.println("Please note that the minimum stamp price for within state post exchange is Rs:"+Stamp.INTRA_STATE.getPrice()+" across state boundries is Rs:"+Stamp.INTER_STATE.getPrice());
                System.out.println("From Address-->");
                getAddress(input,myletter,"from");
                System.out.println("To Address-->");
