@@ -49,4 +49,10 @@ public class Address {
     public void setStateName(String stateName) {
         this.stateName = stateName;
     }
+    
+    public String toString(){
+        
+        return this.name+",\n"+this.doorNumber+",\n"+this.streetName+",\n"+this.city+",\n"+this.stateName+"-"+this.pincode;
+        
+    }
 }

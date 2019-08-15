@@ -23,34 +23,25 @@ public class Letter {
     public Address getToAddress() {
         return toAddress;
     }
+    
+    public String getLetterContent() {
+        return letterContent;
+    }
 
-    /**
-     * @param fromAddress the fromAddress to set
-     */
     public void setFromAddress(Address fromAddress) {
         this.fromAddress = fromAddress;
     }
 
-    /**
-     * @param toAddress the toAddress to set
-     */
     public void setToAddress(Address toAddress) {
         this.toAddress = toAddress;
     }
 
-    /**
-     * @param stamp the stamp to set
-     */
     public void setStamp(int stamp) {
         this.stamp = stamp;
     }
 
-    /**
-     * @param letterContent the letterContent to set
-     */
     public void setLetterContent(String letterContent) {
         this.letterContent = letterContent;
     }
-    
-    
+     
 }

@@ -79,7 +79,10 @@ public class LetterComposer
            }  
            case 2:
            {
-               
+               //handle the case where user asks for a reviewing of letter without actually having a 
+               //letter to review
+               Letter letterToPrint = letters.get(counter-1);
+               printMyLetter(letterToPrint);
                break;
            }
            case 3:
@@ -93,10 +96,31 @@ public class LetterComposer
                ps.sendPost();
                break;
            } 
+           case 5:
+           {
+               System.out.println("Thank you for using Post Office Revived");
+               break;
+           }
            default: {
                System.out.println("Enter a valid choice");
            }
            }
        } while (menuChoice !=5 );
+    }
+
+    private static void printMyLetter(Letter letterToPrint) {
+       Address gAddress = null;
+       StringBuilder myWrittenLetter = new StringBuilder(100);
+       myWrittenLetter.append("-----------------------\n");
+       myWrittenLetter.append("From Address:\n");
+       gAddress = letterToPrint.getFromAddress();
+       myWrittenLetter.append(gAddress.toString());
+       myWrittenLetter.append("\nLetter Body:\n");
+       myWrittenLetter.append(letterToPrint.getLetterContent());
+       myWrittenLetter.append("\nStamp applied: Rs "+letterToPrint.getStamp()+"\n");
+       myWrittenLetter.append("To Address:\n");
+       gAddress = letterToPrint.getToAddress();
+       myWrittenLetter.append(gAddress.toString());
+       System.out.println(myWrittenLetter);
     }
 }
