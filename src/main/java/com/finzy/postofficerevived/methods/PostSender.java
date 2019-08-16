@@ -1,16 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Validates the eligiblity to send post based on the stamp attached by the sender
  */
 package com.finzy.postofficerevived.methods;
 
 import com.finzy.postofficerevived.entities.Letter;
 
-/**
- *
- * @author anusshen
- */
 enum Stamp{
     INTER_STATE(10),
     INTRA_STATE(5);
@@ -29,13 +23,12 @@ enum Stamp{
 
 public class PostSender {
     
-    private Letter sandesa;
-    public boolean isPost;
-    public PostSender(Letter sandesa){
+    private final Letter sandesa;
+    PostSender(Letter sandesa){
          this.sandesa = sandesa;
     }
     
-    boolean validateStamp(){
+    private boolean validateStamp(){
        boolean stampValid = false;
        String sourceState = this.sandesa.getFromAddress().getStateName();
        String destState = this.sandesa.getToAddress().getStateName();
@@ -43,22 +36,27 @@ public class PostSender {
        int stampPrice;
        if(sourceState.toUpperCase().equals(destState.toUpperCase())){
            stampDecider = Stamp.INTRA_STATE;
+           stampPrice = stampDecider.getPrice();
+           if (this.sandesa.getStamp()>= stampPrice)
+               stampValid = true;
        }
-       else
+       else{
            stampDecider = Stamp.INTER_STATE;
-       stampPrice = stampDecider.getPrice();
-       if (stampPrice == this.sandesa.getStamp())
-           stampValid = true;
+           stampPrice = stampDecider.getPrice();
+           if (this.sandesa.getStamp() >= stampPrice)
+               stampValid = true;
+       }
+       
        return stampValid;
     }
     
-    public static void main (String args[]){
-       Letter sandesaOriginal = null;
-       PostSender sp = new PostSender(sandesaOriginal);
-       if(sp.validateStamp())
-         System.out.println("Post sent");
-       else
-          System.out.println("Check the stamp atatched");
+    public String sendPost(){
+        String returnMessage = "";
+        if(validateStamp())
+           returnMessage="Post sent";
+        else
+           returnMessage = "Stamp atatched is of insufficient value";
+        return returnMessage;
+        
     }
-    
 }
