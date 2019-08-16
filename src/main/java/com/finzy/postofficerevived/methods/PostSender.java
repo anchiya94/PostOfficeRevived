@@ -43,18 +43,20 @@ public class PostSender {
        else{
            stampDecider = Stamp.INTER_STATE;
            stampPrice = stampDecider.getPrice();
-           if (this.sandesa.getStamp() == stampPrice)
+           if (this.sandesa.getStamp() >= stampPrice)
                stampValid = true;
        }
        
        return stampValid;
     }
     
-    void sendPost(){
+    public String sendPost(){
+        String returnMessage = "";
         if(validateStamp())
-           System.out.println("Post sent");
+           returnMessage="Post sent";
         else
-           System.out.println("Stamp atatched is of insufficient value");
+           returnMessage = "Stamp atatched is of insufficient value";
+        return returnMessage;
         
     }
 }

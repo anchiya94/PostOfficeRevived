@@ -189,7 +189,7 @@ public class LetterComposer
                try{
                   Letter letterToSend = letters.get(counter-1);
                   PostSender ps = new PostSender(letterToSend);
-                  ps.sendPost();
+                  System.out.println(ps.sendPost());
                   putMetoSleep(1);
                   break;
                }
