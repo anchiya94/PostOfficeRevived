@@ -26,17 +26,34 @@ public class LetterComposer
        //handle empty input scenarios
        Address myAddress=new Address();
        System.out.println("Name:");
-       myAddress.setName(input.readLine());
+       String inputString = input.readLine();
+       inputString = setFieldValue(inputString,input);
+       myAddress.setName(inputString);
+       inputString="";
        System.out.println("Door number/Flat number and House Name/Building Name:");
-       myAddress.setDoorNumber(input.readLine());
+       inputString = input.readLine();
+       inputString = setFieldValue(inputString,input);
+       myAddress.setDoorNumber(inputString);
+       inputString="";
        System.out.println("Street Name:");
-       myAddress.setStreetName(input.readLine());
+       inputString = input.readLine();
+       inputString = setFieldValue(inputString,input);
+       myAddress.setStreetName(inputString);
+       inputString ="";
        System.out.println("City:");
-       myAddress.setCity(input.readLine());
+       inputString = input.readLine();
+       inputString = setFieldValue(inputString,input);
+       myAddress.setCity(inputString);
+       inputString="";
        System.out.println("State:");
-       myAddress.setStateName(input.readLine());
+       inputString = input.readLine();
+       inputString = setFieldValue(inputString,input);
+       myAddress.setStateName(inputString);
+       inputString="";
        System.out.println("Pincode:");
-       myAddress.setPincode(Integer.parseInt(input.readLine()));      
+       inputString = input.readLine();
+       inputString = setFieldValue(inputString,input);
+       myAddress.setPincode(Integer.parseInt(inputString));      
        if (addressType.equals("from"))
            myLetter.setFromAddress(myAddress);
        else
@@ -83,7 +100,6 @@ public class LetterComposer
                        break;
                    } catch (NumberFormatException e) {
                        System.out.println("Enter a number!");
-                       //give a message saying these many attempts left
                        attempts--;
                    }
                }while(attempts>0);
@@ -92,6 +108,10 @@ public class LetterComposer
                String s;
                while ((s = input.readLine()) != null && s.length() != 0) {
                   letterContent.append (s+"\n");
+               }
+               if (s.length() == 0){
+                  System.out.println("Letter body cannot be empty.Either edit the existing letter or compose a new one");
+                  
                }
                myletter.setLetterContent(letterContent.toString());
                letters.add(myletter);
@@ -161,6 +181,9 @@ public class LetterComposer
                         while ((s = input.readLine()) != null && s.length() != 0) {
                         letterContent.append (s+"\n");
                         }
+                        if (s.length() == 0){
+                           System.out.println("Letter body cannot be empty.Either edit the existing letter or compose a new one");
+                        }
                         letterToEdit.setLetterContent(letterContent.toString());
                         break;
                      }
@@ -217,7 +240,7 @@ public class LetterComposer
     private static void printMyLetter(Letter letterToPrint) {
        Address gAddress = null;
        StringBuilder myWrittenLetter = new StringBuilder(10000);
-       myWrittenLetter.append("-----------------------\n");
+       myWrittenLetter.append("=======================================================================\n");
        myWrittenLetter.append("From Address:\n");
        gAddress = letterToPrint.getFromAddress();
        myWrittenLetter.append(gAddress.toString());
@@ -227,6 +250,16 @@ public class LetterComposer
        myWrittenLetter.append("To Address:\n");
        gAddress = letterToPrint.getToAddress();
        myWrittenLetter.append(gAddress.toString());
+       myWrittenLetter.append("\n=======================================================================");
        System.out.println(myWrittenLetter);
+    }
+
+    private static String setFieldValue(String inputString,BufferedReader input) throws IOException {
+       while(inputString.length()==0)
+       {
+           System.out.println("This field cannot be empty");
+           inputString = input.readLine();
+       }
+       return inputString;
     }
 }

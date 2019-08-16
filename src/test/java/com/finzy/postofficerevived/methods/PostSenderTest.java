@@ -1,4 +1,5 @@
-/* Dependency injection of Address class into Letter class; Letter class into PostSenderTest class*/
+/* Dependency injection of Address class into Letter class;
+   Letter class into PostSenderTest class*/
 package com.finzy.postofficerevived.methods;
 
 import com.finzy.postofficerevived.entities.Address;
@@ -10,10 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
 
-/**
- *
- * @author anusshen
- */
+
 public class PostSenderTest {
     
     public PostSenderTest() {
@@ -27,12 +25,9 @@ public class PostSenderTest {
     public static void tearDownClass() {
     }
 
-    /**
-     * Test of sendPost method, of class PostSender.
-     */
     @Test
     public void testSendPost_wrongStamp() {
-        System.out.println("sendPost");
+        System.out.println("sendPost-1");
         Address mockedfAddress = Mockito.mock(Address.class);
         Address mockedtAddress = Mockito.mock(Address.class);
         when(mockedfAddress.getStateName()).thenReturn("Karnataka");
@@ -47,11 +42,26 @@ public class PostSenderTest {
     }
     @Test
     public void testSendPost_rightStamp() {
-        System.out.println("sendPost");
+        System.out.println("sendPost-2");
         Address mockedfAddress = Mockito.mock(Address.class);
         Address mockedtAddress = Mockito.mock(Address.class);
         when(mockedfAddress.getStateName()).thenReturn("Karnataka");
         when(mockedtAddress.getStateName()).thenReturn("Sikkim");
+        Letter mockedLetter = Mockito.mock(Letter.class);
+        when(mockedLetter.getFromAddress()).thenReturn(mockedfAddress);
+        when(mockedLetter.getToAddress()).thenReturn(mockedtAddress);
+        when(mockedLetter.getStamp()).thenReturn(20);
+        PostSender instance = new PostSender(mockedLetter);
+        String result = instance.sendPost();
+        assertEquals("Post sent", result);    
+    }
+    @Test
+    public void testSendPost_rightStamp1() {
+        System.out.println("sendPost-3");
+        Address mockedfAddress = Mockito.mock(Address.class);
+        Address mockedtAddress = Mockito.mock(Address.class);
+        when(mockedfAddress.getStateName()).thenReturn("Karnataka");
+        when(mockedtAddress.getStateName()).thenReturn("Karnataka");
         Letter mockedLetter = Mockito.mock(Letter.class);
         when(mockedLetter.getFromAddress()).thenReturn(mockedfAddress);
         when(mockedLetter.getToAddress()).thenReturn(mockedtAddress);

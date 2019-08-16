@@ -46,7 +46,7 @@ public class Address {
     
     public String toString(){
         
-        return this.name+",\n"+this.doorNumber+",\n"+this.streetName+",\n"+this.city+",\n"+this.stateName+"-"+this.pincode;
+        return "\t\t"+this.name+",\n\t\t"+this.doorNumber+",\n\t\t"+this.streetName+",\n\t\t"+this.city+",\n\t\t"+this.stateName+"-"+this.pincode;
         
     }
 }
