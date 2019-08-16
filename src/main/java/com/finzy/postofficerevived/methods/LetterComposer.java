@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * Class that maintains the code as to which options are to be provided to the user 
  */
 package com.finzy.postofficerevived.methods;
 import com.finzy.postofficerevived.entities.Address;

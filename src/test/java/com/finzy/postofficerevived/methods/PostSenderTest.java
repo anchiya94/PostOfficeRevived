@@ -1,4 +1,4 @@
-
+/* Dependency injection of Address class into Letter class; Letter class into PostSenderTest class*/
 package com.finzy.postofficerevived.methods;
 
 import com.finzy.postofficerevived.entities.Address;
