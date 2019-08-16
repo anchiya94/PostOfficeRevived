@@ -32,9 +32,10 @@
 </ul>
 </p>
 <p>Attempted to maintain method, variable and class names simple and relevant</p>
-<p>Edge cases handled
+<p>Cases cases handled
 <ul>
 <li>Send,Edit or review of post/letter without composing one</li>
 <li>Empty input field check</li>
+  <li>Provision to send more than one letter</li>
 </ul></p>
  </p> 
