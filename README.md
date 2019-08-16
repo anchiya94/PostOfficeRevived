@@ -20,3 +20,21 @@
 </ul>
 </p>
 <p>5. I am done: Quit the application</p> 
+
+<p>Note:
+  <p>Attempt at implementing SOLID concepts :
+    <ul>
+   <li>Dependency Injection in the unit tests written for PostSender class</li>
+   <li>Open..Close principle by encapsulating the data in Letter and Address class</li>
+   <li>Single Responsibility concept by seggregating methods and variable pertaining to one function of application in one class</li>
+   <li>Letter Content</li>
+      
+</ul>
+</p>
+<p>Attempted to maintain method, variable and class names simple and relevant</p>
+<p>Edge cases handled
+<ul>
+<li>Send,Edit or review of post/letter without composing one</li>
+<li>Empty input field check</li>
+</ul></p>
+ </p> 
